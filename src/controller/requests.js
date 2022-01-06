@@ -9,11 +9,7 @@ module.exports.register = async (req, res) => {
 
 module.exports.login = async (req, res) => {
   try {
-    const { username, roomname } = req.body;
-    module.exports = { username, roomname };
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (err) {}
 };
 
 module.exports.logout = async (req, res) => {
