@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: rgb(243 244 246);
+  box-sizing: border-box;
+}
+
+.user-list,
+.message-box {
+  height: 60vh;
+}
