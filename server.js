@@ -1,4 +1,3 @@
-const path = require("path");
 // Importing expressjs
 const express = require("express");
 const app = express();
@@ -27,14 +26,13 @@ app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
 app.use(router);
-app.use(express.static(path.join(__dirname, "client/public")));
 
 const chatterBot = "Chatter";
 
 // Importing socket.io
 const io = require("socket.io")(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://proj-chatter.netlify.app",
     methods: ["GET", "POST", "PUT"],
     credentials: true,
   },
