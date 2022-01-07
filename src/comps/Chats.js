@@ -4,7 +4,7 @@ import queryString from "query-string";
 import io from "socket.io-client";
 
 const socket = io.connect("https://socketio-chatter.herokuapp.com", {
-  transports: ["websocket", "polling", "flashsocket"],
+  transports: ["polling", "flashsocket"],
 });
 
 function Chats() {
