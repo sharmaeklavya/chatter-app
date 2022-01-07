@@ -25,6 +25,8 @@ const port = process.env.PORT || 4500;
 
 //is used to mount the specified middleware function(s) at the path which is being specified.
 app.use(express.json());
+app.use(cookieParser());
+app.use(router);
 app.use(
   cors({
     origin: "https://proj-chatter.netlify.app",
@@ -32,8 +34,6 @@ app.use(
     credentials: true,
   })
 );
-app.use(cookieParser());
-app.use(router);
 
 const chatterBot = "Chatter";
 
@@ -42,7 +42,6 @@ const io = require("socket.io")(server, {
   cors: {
     origin: "https://proj-chatter.netlify.app",
     methods: ["GET", "POST", "PUT"],
-    credentials: true,
   },
 });
 
