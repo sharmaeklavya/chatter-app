@@ -2,10 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import queryString from "query-string";
 import io from "socket.io-client";
-
-const socket = io.connect("https://socketio-chatter.herokuapp.com", {
-  transports: ["polling", "flashsocket"],
-});
+let socket;
 
 function Chats() {
   const location = useLocation();
@@ -14,6 +11,8 @@ function Chats() {
   const [msgText, setMsgText] = useState([]);
   const [userList, setUserList] = useState([]);
   const [userRoom, setUserRoom] = useState();
+
+  socket = io.connect("https://socketio-chatter.herokuapp.com");
 
   useEffect(() => {
     const { username, room } = queryString.parse(location.search);
