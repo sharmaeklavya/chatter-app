@@ -23,14 +23,24 @@ const {
 
 //is used to mount the specified middleware function(s) at the path which is being specified.
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://proj-chatter.netlify.app",
+    credentials: true,
+  })
+);
 app.use(cookieParser());
 app.use(router);
 
 const chatterBot = "Chatter";
 
 // Importing socket.io
-const io = require("socket.io")(server);
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "https://proj-chatter.netlify.app",
+    credentials: true,
+  },
+});
 
 // Establishing a connection when a user connects
 io.on("connection", (socket) => {
