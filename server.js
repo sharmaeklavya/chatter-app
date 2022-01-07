@@ -26,6 +26,7 @@ app.use(express.json());
 app.use(
   cors({
     origin: "https://proj-chatter.netlify.app",
+    methods: ["GET", "POST", "PUT"],
     credentials: true,
   })
 );
