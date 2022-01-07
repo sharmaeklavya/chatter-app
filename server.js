@@ -8,7 +8,7 @@ const cors = require("cors");
 // Imporing Cookie middleware which parses cookies attached to the client request object.
 const cookieParser = require("cookie-parser");
 // Imporing mongodb for database connection
-const connectDB = require("./src/model/connects");
+// const connectDB = require("./src/model/connects");
 // Router module
 const router = require("./src/routes/routes");
 //Importing moment lib for time formating
@@ -20,6 +20,8 @@ const {
   userLeft,
   getRoomUsers,
 } = require("./src/utils/users");
+
+const port = process.env.PORT || 4500;
 
 //is used to mount the specified middleware function(s) at the path which is being specified.
 app.use(express.json());
@@ -96,8 +98,10 @@ io.on("connection", (socket) => {
 });
 
 // Server listens to port
-connectDB()
-  .then((port) => {
-    server.listen(port);
-  })
-  .catch((err) => console.log(err));
+// connectDB()
+//   .then((port) => {
+//     server.listen(port);
+//   })
+//   .catch((err) => console.log(err));
+
+server.listen(port);
