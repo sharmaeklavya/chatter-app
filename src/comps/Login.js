@@ -16,7 +16,7 @@ function Login() {
   return (
     <div className="h-screen w-screen grid place-content-center bg-gray-100">
       <div className="form-container p-14 rounded-lg shadow-md bg-white">
-        <h1 className="text-2xl ">Login with your name</h1>
+        <h1 className="text-2xl ">Join with your name</h1>
         <p className="text-xs font-light text-gray-700 mt-2">
           Only <span className="text-red-900 text-medium">First Name </span>
           required.
@@ -57,7 +57,6 @@ function Login() {
               <option value="selectroom" disabled>
                 Select a room
               </option>
-              <option value="C">C</option>
               <option value="C++">C++</option>
               <option value="Ruby">Ruby</option>
               <option value="Java">Java</option>
