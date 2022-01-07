@@ -12,7 +12,7 @@ function Chats() {
   const [userList, setUserList] = useState([]);
   const [userRoom, setUserRoom] = useState();
 
-  socket = io.connect("https://socketio-chatter.herokuapp.com");
+  socket = io.connect();
 
   useEffect(() => {
     const { username, room } = queryString.parse(location.search);
