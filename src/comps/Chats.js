@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import queryString from "query-string";
 import io from "socket.io-client";
+
 const socket = io.connect("https://socketio-chatter.herokuapp.com", {
   transports: ["websocket", "polling", "flashsocket"],
 });
