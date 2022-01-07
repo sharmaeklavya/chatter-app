@@ -27,6 +27,15 @@ const port = process.env.PORT || 4500;
 app.use(express.json());
 app.use(cookieParser());
 app.use(router);
+
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+  res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
+  next();
+});
+
 app.use(
   cors({
     origin: "https://proj-chatter.netlify.app",
@@ -37,10 +46,11 @@ app.use(
 
 const chatterBot = "Chatter";
 
-// Importing socket.io
+// Importing and establishing socket.io
 const io = require("socket.io")(server, {
   cors: {
-    origin: "https://proj-chatter.netlify.app",
+    origins:
+      "proj-chatter.netlify.app* http://proj-chatter.netlify.app:* http://www.proj-chatter.netlify.app:*",
     methods: ["GET", "POST", "PUT"],
   },
 });
