@@ -38,6 +38,7 @@ const chatterBot = "Chatter";
 const io = require("socket.io")(server, {
   cors: {
     origin: "https://proj-chatter.netlify.app",
+    methods: ["GET", "POST", "PUT"],
     credentials: true,
   },
 });
