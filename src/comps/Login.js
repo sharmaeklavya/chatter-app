@@ -21,11 +21,7 @@ function Login() {
           Only <span className="text-red-900 text-medium">First Name </span>
           required.
         </p>
-        <form
-          onSubmit={joinRoom}
-          action="https://proj-chatter.netlify.app"
-          method="GET"
-        >
+        <form onSubmit={joinRoom}>
           <div className="user-name my-4 border border-solid border-red-900 rounded-sm">
             <label className="p-1 text-xs" htmlFor="username">
               Username
