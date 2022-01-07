@@ -2,7 +2,7 @@ function Header() {
   return (
     <header className="container mx-auto px-8 py-4">
       <nav className="flex items-center justify-between">
-        <div className="chatter-logo h-16 w-32">
+        <div className="chatter-logo h-16 w-32 sm:w-24 sm:h-12">
           <img
             className="h-full w-full"
             src="/chatter/chatter-logos_transparent.png"

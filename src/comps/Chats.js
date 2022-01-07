@@ -62,7 +62,7 @@ function Chats() {
           {userList.map((user, i) => {
             return (
               <div key={i} className="p-3">
-                <div className="flex items-center mt-1 p-2 font-medium">
+                <div className="flex items-center p-2 font-medium">
                   <i className="fas fa-user text-3xl text-blue-700"></i>
                   <p className="user-name grow px-2 text-sm">{user.username}</p>
                 </div>
