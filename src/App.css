@@ -19,3 +19,7 @@ body {
 .message-box {
   height: 60vh;
 }
+
+.form-container {
+  width: 300px;
+}

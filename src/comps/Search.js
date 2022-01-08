@@ -26,7 +26,7 @@ function Search({ userList }) {
       <button
         type="button"
         onClick={leaveTheRoom}
-        className="sm:w-44 w-full m-2 p-3 bg-blue-700 hover:bg-blue-900 text-white text-sm font-medium rounded-full shadow-sm cursor-pointer"
+        className="sm:w-44 w-full m-2 p-3 bg-blue-700 hover:bg-red-700 text-white text-sm font-medium rounded-full shadow-sm cursor-pointer"
       >
         Leave the room
         <i className="fas fa-door-open mx-2 text-lg"></i>

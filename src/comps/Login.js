@@ -15,7 +15,7 @@ function Login() {
 
   return (
     <div className="h-screen w-screen grid place-content-center bg-gray-100">
-      <div className="form-container p-14 rounded-lg shadow-md bg-white">
+      <div className="form-container p-10 rounded-lg shadow-md bg-white">
         <h1 className="text-2xl ">Join with your name</h1>
         <p className="text-xs font-light text-gray-700 mt-2">
           Only <span className="text-red-900 text-medium">First Name </span>
@@ -27,7 +27,7 @@ function Login() {
           // action="http://localhost:3000"
           method="GET"
         >
-          <div className="user-name my-4 border border-solid border-red-900 rounded-sm">
+          <div className="user-name mt-4 mb-2 border border-solid border-red-900 rounded-sm">
             <label className="p-1 text-xs" htmlFor="username">
               Username
             </label>
@@ -43,6 +43,10 @@ function Login() {
               required
             />
           </div>
+          <p className="text-xs mb-4 font-light text-gray-700 underline">
+            Please use English letters only. Do not use numbers or key/symbols.
+            Thanks.
+          </p>
           <div className="join-room my-4 border border-solid border-red-900 rounded-sm">
             <label className="p-1 text-xs" htmlFor="joinroom">
               Join Room
@@ -66,7 +70,7 @@ function Login() {
             </select>
           </div>
           <button
-            className="text-sm p-2 w-full mx-auto shadow-lg bg-red-900 text-white rounded-sm hover:rounded-full hover:bg-gray-900"
+            className="text-sm my-4 p-2 w-full mx-auto shadow-lg bg-red-900 text-white rounded-sm hover:rounded-full hover:bg-gray-900"
             type="submit"
           >
             Submit
