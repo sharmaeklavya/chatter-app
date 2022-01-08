@@ -23,8 +23,8 @@ function Login() {
         </p>
         <form
           onSubmit={joinRoom}
-          // action="https://proj-chatter.netlify.app"
-          action="http://localhost:3000"
+          action="https://proj-chatter.netlify.app"
+          // action="http://localhost:3000"
           method="GET"
         >
           <div className="user-name my-4 border border-solid border-red-900 rounded-sm">
