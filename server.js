@@ -22,38 +22,16 @@ const {
 } = require("./src/utils/users");
 
 const port = process.env.PORT || 4500;
+const chatterBot = "Chatter";
 
 //is used to mount the specified middleware function(s) at the path which is being specified.
 app.use(express.json());
 app.use(cookieParser());
 app.use(router);
-
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  res.header("Access-Control-Allow-Headers", "Content-Type");
-  res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
-  next();
-});
-
-app.use(
-  cors({
-    origin: "https://proj-chatter.netlify.app",
-    methods: ["GET", "POST", "PUT"],
-    credentials: true,
-  })
-);
-
-const chatterBot = "Chatter";
+app.use(cors());
 
 // Importing and establishing socket.io
-const io = require("socket.io")(server, {
-  cors: {
-    origins:
-      "proj-chatter.netlify.app* http://proj-chatter.netlify.app:* http://www.proj-chatter.netlify.app:*",
-    methods: ["GET", "POST", "PUT"],
-  },
-});
+const io = require("socket.io")(server);
 
 // Establishing a connection when a user connects
 io.on("connection", (socket) => {
