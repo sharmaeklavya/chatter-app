@@ -31,7 +31,14 @@ app.use(router);
 app.use(cors());
 
 // Importing and establishing socket.io
-const io = require("socket.io")(server);
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "https://proj-chatter.netlify.app",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["my-custom-header"],
+    credentials: true,
+  },
+});
 
 // Establishing a connection when a user connects
 io.on("connection", (socket) => {
@@ -91,4 +98,6 @@ io.on("connection", (socket) => {
 //   })
 //   .catch((err) => console.log(err));
 
-server.listen(port);
+server.listen(port, () => {
+  console.log(`Server is running on ${port}`);
+});
