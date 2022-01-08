@@ -34,9 +34,11 @@ function Chats() {
   }, [SERVER_ENDPOINT, location.search]);
 
   useEffect(() => {
-    socket.on("chat", (payload) => {
-      setMsgText([...msgText, payload]);
-    });
+    setTimeout(() => {
+      socket.on("chat", (payload) => {
+        setMsgText([...msgText, payload]);
+      });
+    }, 200);
     socket.on("roomUsers", ({ users, room }) => {
       setUserList([...userList, ...users]);
       setUserRoom(room);
@@ -71,11 +73,7 @@ function Chats() {
               <div key={i} className="p-3">
                 <div className="flex items-center p-2 font-medium">
                   <i className="fas fa-user text-3xl text-blue-700"></i>
-                  {setTimeout(() => {
-                    <p className="user-name grow px-2 text-sm">
-                      {user.username}
-                    </p>;
-                  }, 100)}
+                  <p className="user-name grow px-2 text-sm">{user.username}</p>
                 </div>
                 <hr className="ml-11 border-1" />
               </div>
