@@ -34,11 +34,9 @@ function Chats() {
   }, [SERVER_ENDPOINT, location.search]);
 
   useEffect(() => {
-    setTimeout(() => {
-      socket.on("chat", (payload) => {
-        setMsgText([...msgText, payload]);
-      });
-    }, 100);
+    socket.on("chat", (payload) => {
+      setMsgText([...msgText, payload]);
+    });
 
     socket.on("roomUsers", ({ users, room }) => {
       setUserList([...userList, ...users]);
