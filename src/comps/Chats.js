@@ -38,7 +38,8 @@ function Chats() {
       socket.on("chat", (payload) => {
         setMsgText([...msgText, payload]);
       });
-    }, 200);
+    }, 100);
+
     socket.on("roomUsers", ({ users, room }) => {
       setUserList([...userList, ...users]);
       setUserRoom(room);
