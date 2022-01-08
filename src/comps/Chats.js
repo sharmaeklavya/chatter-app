@@ -21,7 +21,7 @@ function Chats() {
     socket = io(SERVER_ENDPOINT, {
       withCredentials: true,
       extraHeaders: {
-        "my-custom-header": "abcd",
+        "chatter-header": "chatter",
       },
       transports: ["websocket", "polling", "flashsocket"],
     });
