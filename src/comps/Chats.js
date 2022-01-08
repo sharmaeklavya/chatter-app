@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
+import Picker from "emoji-picker-react";
 import queryString from "query-string";
 import io from "socket.io-client";
 import Header from "./Header";
@@ -15,6 +16,7 @@ function Chats() {
   const [userList, setUserList] = useState([]);
   const [userRoom, setUserRoom] = useState("");
   const [queryUserName, setQueryUserName] = useState("");
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
   // const SERVER_ENDPOINT = "http://localhost:4500";
   const SERVER_ENDPOINT = "https://socketio-chatter.herokuapp.com";
@@ -62,6 +64,12 @@ function Chats() {
     messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
   };
   useEffect(scrollToBottom, [msgText]);
+
+  // emoji picker
+  const onEmojiClick = (event, emojiObject) => {
+    setInputMsg((input) => input + emojiObject.emoji);
+    setShowEmojiPicker(false);
+  };
 
   return (
     <section className="container mx-auto px-8 py-4">
@@ -122,8 +130,13 @@ function Chats() {
 
           {/* message input form */}
 
-          <div className="w-full h-12 relative mt-auto mb-4 text-center bg-gray-100 border border-solid rounded-full">
-            <i className="far fa-smile absolute top-2 left-4 text-2xl text-blue-700"></i>
+          <div className="w-full h-12 relative mt-auto mb-4 px-4 bg-gray-100 border border-solid rounded-full">
+            <i
+              className="far fa-smile absolute top-2 left-4 text-2xl text-blue-700"
+              onClick={() => setShowEmojiPicker((val) => !val)}
+            >
+              {showEmojiPicker && <Picker onEmojiClick={onEmojiClick} />}
+            </i>
             <form onSubmit={sendMessage} className="inline w-full text-center">
               <input
                 className="w-10/12 h-12 pl-8 text-sm bg-transparent rounded-full border-none outline-none"

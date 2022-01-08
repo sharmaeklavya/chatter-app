@@ -10,9 +10,9 @@ function Header() {
       </div>
       <button
         type="button"
-        className="text-sm font-medium px-4 py-2 bg-white rounded-md"
+        className="text-sm font-medium px-4 py-2 bg-white rounded-md cursor-none"
       >
-        ChatterBox
+        Chat App
       </button>
     </nav>
   );
