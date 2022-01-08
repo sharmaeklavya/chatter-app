@@ -19,6 +19,10 @@ function Chats() {
   useEffect(() => {
     const { username, room } = queryString.parse(location.search);
     socket = io(SERVER_ENDPOINT, {
+      withCredentials: true,
+      extraHeaders: {
+        "my-custom-header": "abcd",
+      },
       transports: ["websocket", "polling", "flashsocket"],
     });
     setQueryUserName(username);
