@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import queryString from "query-string";
 import io from "socket.io-client";
+import Header from "./Header";
+import Search from "./Search";
+
 let socket;
 
 function Chats() {
@@ -35,7 +38,7 @@ function Chats() {
 
   useEffect(() => {
     socket.on("chat", (payload) => {
-      setMsgText([...msgText, payload]);
+      setMsgText((msgs) => [...msgs, payload]);
     });
 
     socket.on("roomUsers", ({ users, room }) => {
@@ -62,6 +65,8 @@ function Chats() {
 
   return (
     <section className="container mx-auto px-8 py-4">
+      <Header />
+      <Search users={userList} />
       <div className="flex flex-wrap">
         <div className="w-full sm:w-72 m-2 bg-white overflow-y-auto rounded-lg border-none outline-none shadow-sm">
           {/* sidebar - list of users */}
@@ -87,9 +92,8 @@ function Chats() {
         {/* message box - text area */}
         <div className="message-box w-full sm:w-72 flex-1 flex flex-col my-2 p-5 pb-2 bg-white rounded-lg border-none outline-none shadow-sm">
           <div className="self-stretch my-2 overflow-y-auto">
-            {msgText.map((msg, i) => {
-              return msg.username === queryUserName ||
-                msg.username === "Chatter" ? (
+            {msgText.map((msg, i) =>
+              msg.username === queryUserName || msg.username === "Chatter" ? (
                 <div
                   key={i}
                   className="meta relative ml-auto w-fit text-right text-sm p-3 mt-2 bg-gray-100 rounded-full rounded-tr-none"
@@ -111,8 +115,8 @@ function Chats() {
                   </p>
                   <p className="text-sm font-medium">{msg.text}</p>
                 </div>
-              );
-            })}
+              )
+            )}
             <div ref={messagesEndRef} />
           </div>
 
