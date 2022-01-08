@@ -7,34 +7,37 @@ let socket;
 function Chats() {
   const location = useLocation();
   const messagesEndRef = useRef(null);
-  const [inputMsg, setInputMsg] = useState();
+  const [inputMsg, setInputMsg] = useState("");
   const [msgText, setMsgText] = useState([]);
   const [userList, setUserList] = useState([]);
-  const [userRoom, setUserRoom] = useState();
+  const [userRoom, setUserRoom] = useState("");
+  const [queryUserName, setQueryUserName] = useState("");
 
-  socket = io.connect("https://socketio-chatter.herokuapp.com");
+  // const SERVER_ENDPOINT = "http://localhost:4500";
+  const SERVER_ENDPOINT = "https://socketio-chatter.herokuapp.com";
 
   useEffect(() => {
     const { username, room } = queryString.parse(location.search);
-    socket.emit("joinRoom", { username, room });
-  }, [location.search]);
-
-  useEffect(() => {
-    socket.on("roomUsers", ({ users, room }) => {
-      console.log(users);
-      setUserList([...userList, ...users]);
-      setUserRoom(room);
+    socket = io(SERVER_ENDPOINT, {
+      transports: ["websocket", "polling", "flashsocket"],
     });
-  }, [userList]);
+    setQueryUserName(username);
+    socket.open();
+    socket.emit("joinRoom", { username, room });
+    return () => {
+      socket.close();
+    };
+  }, [SERVER_ENDPOINT, location.search]);
 
   useEffect(() => {
     socket.on("chat", (payload) => {
       setMsgText([...msgText, payload]);
     });
-    return () => {
-      socket.off();
-    };
-  }, [msgText]);
+    socket.on("roomUsers", ({ users, room }) => {
+      setUserList([...userList, ...users]);
+      setUserRoom(room);
+    });
+  }, []);
 
   const sendMessage = (e) => {
     e.preventDefault();
@@ -77,15 +80,27 @@ function Chats() {
 
         {/* message box - text area */}
         <div className="message-box w-full sm:w-72 flex-1 flex flex-col my-2 p-5 pb-2 bg-white rounded-lg border-none outline-none shadow-sm">
-          <div className="w-5/6 my-2 self-end overflow-y-auto">
+          <div className="self-stretch my-2 overflow-y-auto">
             {msgText.map((msg, i) => {
-              return (
+              return msg.username === queryUserName ||
+                msg.username === "Chatter" ? (
                 <div
                   key={i}
                   className="meta relative ml-auto w-fit text-right text-sm p-3 mt-2 bg-gray-100 rounded-full rounded-tr-none"
                 >
                   <p className="text-xs text-gray-500">
-                    <span>{msg.userName + " "}</span>
+                    <span>{msg.username + " "}</span>
+                    <span>{msg.time}</span>
+                  </p>
+                  <p className="text-sm font-medium">{msg.text}</p>
+                </div>
+              ) : (
+                <div
+                  key={i}
+                  className="meta relative mr-auto w-fit text-left text-sm p-3 mt-2 bg-gray-100 rounded-full rounded-tl-none"
+                >
+                  <p className="text-xs text-gray-500">
+                    <span>{msg.username + " "}</span>
                     <span>{msg.time}</span>
                   </p>
                   <p className="text-sm font-medium">{msg.text}</p>
