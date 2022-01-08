@@ -42,6 +42,7 @@ function Chats() {
       setUserList([...userList, ...users]);
       setUserRoom(room);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const sendMessage = (e) => {
