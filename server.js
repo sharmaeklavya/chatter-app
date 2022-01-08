@@ -35,7 +35,7 @@ const io = require("socket.io")(server, {
   cors: {
     origin: "https://proj-chatter.netlify.app",
     methods: ["GET", "POST"],
-    allowedHeaders: ["my-custom-header"],
+    allowedHeaders: ["chatter-header"],
     credentials: true,
   },
 });
