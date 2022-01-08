@@ -21,7 +21,7 @@ function Chats() {
     socket = io(SERVER_ENDPOINT, {
       withCredentials: true,
       extraHeaders: {
-        "my-custom-header": "abcd",
+        "chatter-header": "chatter",
       },
       transports: ["websocket", "polling", "flashsocket"],
     });
@@ -71,7 +71,11 @@ function Chats() {
               <div key={i} className="p-3">
                 <div className="flex items-center p-2 font-medium">
                   <i className="fas fa-user text-3xl text-blue-700"></i>
-                  <p className="user-name grow px-2 text-sm">{user.username}</p>
+                  {setTimeout(() => {
+                    <p className="user-name grow px-2 text-sm">
+                      {user.username}
+                    </p>;
+                  }, 100)}
                 </div>
                 <hr className="ml-11 border-1" />
               </div>
