@@ -8,3 +8,6 @@ Tools used in this project:
 2. ExpressJS
 3. React Library
 4. Tailwind CSS
+
+##Live Demo
+[Project Chatter](https://proj-chatter.netlify.app)

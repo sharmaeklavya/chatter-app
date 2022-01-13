@@ -62,11 +62,14 @@ function Login() {
               <option value="selectroom" disabled>
                 Select a room
               </option>
-              <option value="C++">C++</option>
-              <option value="Ruby">Ruby</option>
-              <option value="Java">Java</option>
-              <option value="Python">Python</option>
-              <option value="Javascript">JavaScript</option>
+              <option value="Tech">Tech</option>
+              <option value="Science">Science</option>
+              <option value="Sports">Sports</option>
+              <option value="Politics">Politics</option>
+              <option value="WildLife">WildLife</option>
+              <option value="Business">Business</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Lifestyle">Lifestyle</option>
             </select>
           </div>
           <button
