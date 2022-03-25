@@ -1,16 +1,16 @@
-# Chatter - Chat Application
+## Chatter - Chat Application
 
-This project was built with Soket.io.
+#### [Live Preview - Chatter App](https://proj-chatter.netlify.app)
 
-Tools used in this project:
+#### [Server side - backend code](https://github.com/sharmaeklavya/socketio/tree/server)
 
-1. Socket.io
-2. ExpressJS
-3. React Library
-4. Tailwind CSS
+### Technologies used for this project
 
-## [Server side - backend code](https://github.com/sharmaeklavya/socketio/tree/server)
+- Socket.IO
+- Express JS
+- React JS
+- Tailwind CSS
 
-## Live Demo
+### About
 
-[Project Chatter](https://proj-chatter.netlify.app)
+This is a chat application built with Socket.io to communicate with mindealike people. Start the conversation with a text or emojis. The app has a list of room/topics. You enter your name on the login page, select the room and start chatting with people having similar interests. Send a text or emojis to express yourself. On the left side, app displays the room name and names of all the persons who are currently in the room. The app also displays the information on the user joining the room or leaving the room.
